@@ -1,0 +1,4 @@
+lib
+*.pdf
+.idea
+target
