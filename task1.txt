@@ -1,0 +1,15 @@
+Done some black-box testing
+
+The names of the tests are as follows and wether or not they fail or pass on the first version (A) of the code:
+
+testProcessPayment_FirstOrderWithCreditCard - fail
+testProcessPayment_FirstOrderWithPayPal - fail
+testProcessPayment_FirstOrderWithCash - pass
+testProcessPayment_NonFirstOrderWithCreditCard -pass
+testProcessPayment_InvalidAmount - pass
+testCalculateDeliveryFee_LowAmount - pass
+testCalculateDeliveryFee_HighAmount - pass
+
+and they pretty much do what's implied
+
+the first two tests' failure message; they both say the actual final ammount is lower than the expected amount, so going to work on that
