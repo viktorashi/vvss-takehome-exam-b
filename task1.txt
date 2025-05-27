@@ -1,4 +1,4 @@
-Done some black-box testing
+Done some black-box testing, just based on the specification of "10% discount for first costumers, 5% for card, 2% for paypal, and 15% tax on all transactions"
 
 The names of the tests are as follows and wether or not they fail or pass on the first version (A) of the code:
 
@@ -13,3 +13,5 @@ testCalculateDeliveryFee_HighAmount - pass
 and they pretty much do what's implied
 
 the first two tests' failure message; they both say the actual final ammount is lower than the expected amount, so going to work on that
+
+UPDATE:: Now, after the modifications, all tests pass well

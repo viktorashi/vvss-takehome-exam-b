@@ -38,13 +38,11 @@ public class PaymentProcessor {
                 break;
         }
 
-        // BUG: the tax of 0.15 should be applied AFTER the discount! 
-        double taxedAmount = amount * (1 + 0.15);  // aplying a tax of 0.15       
+        double amountAfterDiscount = amount * (1 - discount);
+        final double tax = amountAfterDiscount * 0.15;  // 15%, dupa discounturi aparent
+        double finalAmount = amountAfterDiscount + tax;
 
-        double discountedAmount = amount * (1 - discount);
-
-        double finalAmount = discountedAmount;
-
+//        creca ia round pana la 2 zecimale
         return Math.round(finalAmount * 100.0) / 100.0;
     }
 
