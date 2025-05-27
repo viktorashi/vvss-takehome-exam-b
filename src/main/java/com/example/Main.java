@@ -1,5 +1,6 @@
 package com.example;
-import com.example.PaymentProcessor.PaymentMethod;
+import com.example.versionB.PaymentProcessor;
+import com.example.interfaces.PaymentMethod;
 
 public class Main {
     public static void main(String[] args) {

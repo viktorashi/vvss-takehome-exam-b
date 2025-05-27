@@ -1,23 +1,9 @@
-package com.example;
+package com.example.versionB;
+import com.example.interfaces.IPaymentProcessor;
+import com.example.interfaces.PaymentMethod;
 
-public class PaymentProcessor {
+public class PaymentProcessor implements IPaymentProcessor {
 
-    public enum PaymentMethod {
-        CREDIT_CARD, PAYPAL, CASH
-    }
-
-    /**
-     * Processes a payment with discounts based on the order type and payment method.
-     * This method applies a 10% discount for first orders,
-     * 5% discount for credit card payments,
-     * 2% discount for PayPal payments,
-     * and no discount for cash payments.
-     * It also applies a tax of 15% on the total amount after discounts.
-     * @param amount
-     * @param isFirstOrder
-     * @param method
-     * @return The final amount after applying discounts and tax.
-     */
     public double processPayment(double amount, boolean isFirstOrder, PaymentMethod method) {
         if (amount <= 0) {
             throw new IllegalArgumentException("Amount must be positive");
