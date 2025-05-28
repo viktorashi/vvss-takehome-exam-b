@@ -5,6 +5,7 @@ import com.example.interfaces.PaymentMethod;
 
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
+import org.junit.jupiter.api.Tag;
 
 import java.util.stream.Stream;
 
@@ -20,6 +21,9 @@ class PaymentProcessorTest {
         );
     }
 
+    @Tag("processPayment")
+    @Tag("CreditCard")
+    @Tag("FirstOrder")
     @ParameterizedTest
     @MethodSource("paymentProcessorProvider")
     void testProcessPayment_FirstOrderWithCreditCard(IPaymentProcessor processor) {
@@ -27,13 +31,18 @@ class PaymentProcessorTest {
         assertEquals(97.75, result, 0.01); // Expected value after 10% + 5% discount
     }
 
+    @Tag("processPayment")
+    @Tag("PayPal")
+    @Tag("FirstOrder")
     @ParameterizedTest
     @MethodSource("paymentProcessorProvider")
     void testProcessPayment_FirstOrderWithPayPal(IPaymentProcessor processor) {
         double result = processor.processPayment(100.0, true, PaymentMethod.PAYPAL);
         assertEquals(101.2, result, 0.01); // Expected value after 10% + 2% discount
     }
-
+    @Tag("processPayment")
+    @Tag("FirstOrder")
+    @Tag("Cash")
     @ParameterizedTest
     @MethodSource("paymentProcessorProvider")
     void testProcessPayment_FirstOrderWithCash(IPaymentProcessor processor) {
@@ -41,6 +50,9 @@ class PaymentProcessorTest {
         assertEquals(103.5, result, 0.01); // Expected value after 10% discount
     }
 
+    @Tag("processPayment")
+    @Tag("CreditCard")
+    @Tag("NonFirstOrder")
     @ParameterizedTest
     @MethodSource("paymentProcessorProvider")
     void testProcessPayment_NonFirstOrderWithCreditCard(IPaymentProcessor processor) {
@@ -48,12 +60,15 @@ class PaymentProcessorTest {
         assertEquals(109.25, result, 0.01); // Expected value after 5% discount
     }
 
+    @Tag("processPayment")
+    @Tag("CreditCard")
     @ParameterizedTest
     @MethodSource("paymentProcessorProvider")
     void testProcessPayment_InvalidAmount(IPaymentProcessor processor) {
         assertThrows(IllegalArgumentException.class, () -> processor.processPayment(-10.0, true, PaymentMethod.CREDIT_CARD));
     }
 
+    @Tag("DeliveryFee")
     @ParameterizedTest
     @MethodSource("paymentProcessorProvider")
     void testCalculateDeliveryFee_LowAmount(IPaymentProcessor processor) {
@@ -61,6 +76,7 @@ class PaymentProcessorTest {
         assertEquals(5.0, result, 0.01); // Delivery fee for amounts < 50
     }
 
+    @Tag("DeliveryFee")
     @ParameterizedTest
     @MethodSource("paymentProcessorProvider")
     void testCalculateDeliveryFee_HighAmount(IPaymentProcessor processor) {

@@ -1,0 +1,15 @@
+I used the @Tag annotation to categorize the tests
+i made some for the credit-card, some cash, paypal, firstOrder, Non-FirstOrder etc, and more coarse-grained ones like tagging tests that target a particular method (proccessPayment, deliveryFee) and based on some "dependency analsysis" as well
+
+Considering I've only changed the things related to the "processPayment" method, ill just run the test suite:
+
+mvn test -Dgroups="processPayment"
+
+showing the following tests fail for version A of the code, and succeeed for version B
+
+testProcessPayment_FirstOrderWithCash
+testProcessPayment_FirstOrderWithCreditCard
+testProcessPayment_FirstOrderWithPayPal
+testProcessPayment_NonFirstOrderWithCreditCard
+
+so no need to re-run everything
